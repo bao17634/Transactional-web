@@ -1,0 +1,108 @@
+html{
+    height: 100%;
+    width: 100%;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+}
+.box{
+
+    height: 100%;
+    width: 100%;
+    background-color: #5bc0de;
+    background: url("../images/login_bg.png") no-repeat top;
+    background-size: 100% auto;
+}
+.top{
+    height: 55%;
+}
+.title{
+    font-family: '微软雅黑';
+    margin: 0px auto;
+    width:700px;
+    text-align: left;
+    font-size: 32px;
+    color: #2a8bd6;
+    padding: 20px 0px;
+    font-weight: 600;
+}
+
+.logo{
+    vertical-align: top;
+    display: inline-block;
+    height: 40px;
+    width: 70px;
+    background: url("../image/logo.png") repeat-x center ;
+    background-size: 100% 100%;
+}
+.text{
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+}
+.bottom{
+    margin: 0px auto;
+    width:700px;
+    text-align: left;
+}
+
+.button{
+    padding: 6px 25px;
+    background: url("../images/button_bg.png") repeat-x ;
+    background-size: 100% 100%;
+    border: 1px solid #0064b0;
+    border-radius: 3px;
+    color: #ffffff;
+    position: relative;
+    left: -25px;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #000; opacity:0.3;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #000;opacity:0.3;
+}
+
+input:-ms-input-placeholder{
+    color: #000;opacity:0.3;
+}
+
+input::-webkit-input-placeholder{
+    color: #000;opacity:0.3;
+}
+
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    -webkit-text-fill-color: #333;
+}
+.userName{
+    padding: 8px 5px;
+    padding-left: 30px;
+    border-radius: 5px;
+    width: 35%;
+    box-shadow: none;
+    border: 1px solid #c0c0c0;
+    margin-bottom: 20px;
+    position: relative;
+    left: -18px;
+    z-index: 9;
+}
+.passWord{
+    padding: 8px 5px;
+    padding-left: 30px;
+    border-radius: 5px;
+    width: 35%;
+    box-shadow: none;
+    border: 1px solid #c0c0c0;
+    margin-right:10px ;
+    margin-bottom: 20px;
+    position: relative;
+    left: -25px;
+    z-index: 9;
+
+}

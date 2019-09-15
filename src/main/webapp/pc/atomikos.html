@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>TAS物流自动化管理系统</title>
+    <script type="text/javascript" src="dist/vue.js"></script>
+    <!--<script type="text/javascript" src="js/vue-resource.js"></script>-->
+    <script type="text/javascript" src="js/my.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="./dist/iview.js"></script>
+    <link rel="stylesheet" type="text/css" href="./dist/iview.css">
+    <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_434942_dmmdup35qknjyvi.css">
+    <!--<link rel="SHORTCUT ICON" href="image/favicon.ico"/>-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/common.js"></script>
+
+    <style>
+        .ivu-menu-vertical.ivu-menu-light:after {
+            background: none;
+        }
+
+        .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) {
+            border-right: none;
+            border-left: 2px solid #2d8cf0;
+            background-color: #fdfdfd;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing:border-box;
+        }
+        .ivu-menu-item{
+            border-left: 2px solid #efefef;
+            border-right: none;
+        }
+        .ivu-menu-light.ivu-menu-vertical .ivu-menu-item{
+            border: none;
+            border-left: 2px solid #efefef;
+        }
+        /*顶部空白区，转css无效*/
+        .ivu-tabs-bar{
+            margin-bottom:0px;
+        }
+    </style>
+</head>
+<body>
+<div class="content" id="content">
+    <template>
+        <Table :columns="columns1" :data="mysql"></Table>
+        <Table :columns="columns1" :data="pgsql"></Table>
+    </template>
+</div>
+<script>
+    var vsidebar = new Vue({
+        el: "#content",
+        data: {
+            columns1:[
+                {
+                    title: '库存数量',
+                    key: 'number'
+                },
+                {
+                    title: '货物编码',
+                    key: 'commodityCode'
+                },
+                {
+                    title: '货物名称',
+                    key: 'commodityName'
+                }
+            ],
+            mysql:[],
+            pgsql:[]
+        },
+        created(){
+            let that=this
+            that.$http.post("pc/yqwl/user/updatePassword",).then((result) => {
+                console.log(result);
+        });
+        },
+        methods: {
+
+            },
+
+    });
+</script>
+</body>
+</html>

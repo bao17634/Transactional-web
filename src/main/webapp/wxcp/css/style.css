@@ -1,0 +1,434 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.demo-spin-icon-load{
+    animation: ani-demo-spin 1s linear infinite;
+}
+@keyframes ani-demo-spin {
+    from { transform: rotate(0deg);}
+    50%  { transform: rotate(180deg);}
+    to   { transform: rotate(360deg);}
+}
+.demo-spin-col{
+    height: 100px;
+    position: relative;
+    border: 1px solid #eee;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.content {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-color: #fff;
+    border: 0.5px solid #f9f9f9;
+
+}
+
+.tit {
+    height: 5%;
+    background-color: #1199ff;
+    margin: 0px;
+}
+
+.tit p {
+    font-family: 微软雅黑;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    padding-top: 0.65%;
+}
+
+.tit img {
+    width: 3%;
+    padding-top: 0.55%;
+    float: left;
+    margin-left: 2%;
+}
+
+.xian {
+    border-top: 1px solid white;
+    border-bottom: 3px solid #1199ff;
+    background-color: silver;
+
+}
+
+.left {
+    height: 94.3%;
+    width: 12.5%;
+    background-color: #f6f6f6;
+    float: left;
+}
+
+.right {
+    height: 94.3%;
+    width: 100%;
+}
+
+.sousuo {
+    width: 98%;
+    padding: 5px 20px;
+    border-bottom: 1px dashed silver;
+    margin-left: 20px;
+}
+
+.butt {
+    display: inline-block;
+    background-color: #1199ff;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.butt:hover {
+    display: inline-block;
+    background-color: #0088ff;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.tabl {
+    margin-top: 5px;
+}
+
+.taba {
+    margin: 8px 20px;
+}
+
+a {
+    color: black;
+}
+
+.dat {
+    width: 14%;
+}
+
+.zhi {
+    font-size: 14px;
+    float: left;
+    margin: 5px 20px;
+
+}
+
+.biaoti {
+    width: 80px;
+    float: left;
+    font-size: 15px;
+    font-family: 微软雅黑;
+    margin: 5px 20px;
+    color: silver;
+}
+
+.tie {
+    font-size: 16px;
+    font-family: 微软雅黑;
+    padding: 20px;
+    color: black;
+    font-weight: 700;
+}
+
+.ech {
+    width: 98%;
+    height: 55%;
+    margin: 0px 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f6f6f6;
+}
+
+.zengjia {
+    font-family: 微软雅黑;
+    width: 43%;
+    padding: 2px 10px;
+    display: inline-block;
+    margin: 5px 10px;
+
+}
+
+.zdm {
+    font-size: 15px;
+    width: 100%;
+    display: block;
+}
+
+.shuru {
+    width: 100%;
+    color: #6b6f6f;
+
+}
+
+.pen {
+    float: left;
+    margin-left: 95%;
+    margin-top: -20px;
+    width: 10%;
+    z-index: 1;
+}
+
+.anniu {
+    height: 5%;
+    position: fixed;
+    bottom: 10px;
+    right: 0px;
+}
+
+.tanchu {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 100%;
+    width: 40%;
+    float: right;
+    /*box-shadow: -5px 0px 25px #d6d6d6;*/
+    z-index: 99;
+    box-shadow: -5px 0px 15px #d6d6d6;
+    background-color: #ffffff;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.tit_tc {
+    height: 42px;
+    border-bottom: 1px solid silver;
+}
+
+.tit_bt {
+    display: inline-block;
+    font-family: '微软雅黑';
+    height: 44px;
+    line-height: 44px;
+    font-size: 16px;
+    margin: 0px 15px;
+    color: #000000;
+    font-weight: 500;
+}
+
+.guanbi {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    line-height: 44px;
+    float: right;
+    color: #d4d4d4;
+    font-size: 10px;
+    text-align: center;
+}
+
+.guanbi:hover {
+    background-color: #efefef;
+    color: #000000;
+}
+
+.ivu-table td {
+    font-size: 16px;
+    height: 50px;
+    line-height: 50px;
+
+}
+
+.ivu-table th {
+    background-color: #f5fbff;
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #1199ff;
+    font-size: 14px;
+
+}
+
+.ivu-table {
+    height: auto;
+    z-index: -1;
+}
+
+.ivu-table-wrapper {
+    border: none;
+}
+
+.ivu-checkbox-inner {
+    position: relative;
+    top: 3px;
+    left: 0px;
+}
+
+.ivu-table:after {
+    z-index: -1;
+}
+
+.ivu-table:before {
+    z-index: -1;
+}
+
+.ivu-input {
+    display: inline-block;
+    width: 100%;
+    height: 32px;
+    line-height: 1.5;
+    padding: 4px 0px;
+    font-size: 12px;
+    border: none;
+    border-radius: 0px;
+    color: #495060;
+    border-bottom: 1px solid #efefef;
+}
+
+.ivu-input:hover {
+    border-bottom: 1px solid #57a3f3;
+}
+
+.ivu-input:focus {
+    border-bottom: 1px solid #efefef;
+    outline: 0;
+    box-shadow: 0 0 0 0px rgba(45, 140, 240, .2)
+}
+
+.sousu input {
+    height: 30px;
+    display: inline-block;
+    padding-right: 30px;
+    width: 300px;
+    box-shadow: none;
+    background: url("../images/ss.png") no-repeat right;
+    background-color: #f9f9f9;
+
+}
+
+.sousuo_lia input {
+    height: 30px;
+    display: inline-block;
+    width: 250px;
+    box-shadow: none;
+    background: url("../images/ss.png") no-repeat right;
+    background-color: #f9f9f9;
+
+}
+
+.sousuo_lia span {
+    display: inline-block;
+    padding-right: 20px;
+    width: 70px;
+}
+
+.sousuo span {
+    display: inline-block;
+    padding-right: 20px;
+}
+
+.sousuo_lia {
+    width: 33%;
+    display: inline-block;
+}
+
+.butt_ss {
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.sousuo_liabt {
+    width: 2%;
+    display: inline-block
+}
+
+.wall {
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.tc_footer {
+    width: 40%;
+    height: 44px;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    background-color: white;
+    border-top: 1px solid #efefef;
+    z-index: 9;
+}
+
+.tc_bc {
+    height: 44px;
+    line-height: 44px;
+    width: 100px;
+    border-top: 1px solid #efefef;
+    background-color: #1199ff;
+    float: right;
+    text-align: center;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.tc_qx {
+    margin-right: 10px;
+    height: 42px;
+    line-height: 42px;
+    width: 100px;
+    background-color: #ffffff;
+    color: #43a2ff;
+    border: 1px dashed #efefef;
+    float: right;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.tc_qx:hover {
+    height: 42px;
+    line-height: 42px;
+    width: 100px;
+    background-color: #ffffff;
+    color: #1199ff;
+    border: 1px dashed #1199ff;
+    float: right;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.tc_bc:hover {
+    background-color: #078bee;
+}
+
+.paging {
+    height: 45px;
+    width: 100%;
+    background-color: #f6f6f6;
+    padding-left: 50px;
+    line-height: 45px;
+    padding-right: 20px;
+
+}
+
+.menu {
+    margin-top: 20px;
+}
+.ivu-select-selection{
+    border:none;
+    border-bottom: 1px solid #efefef;
+    border-radius: 0px;
+}
+.ivu-select-visible .ivu-select-selection{
+    box-shadow: none;
+    border-color:#efefef;
+}
+.ivu-select-single .ivu-select-selection .ivu-select-placeholder, .ivu-select-single .ivu-select-selection .ivu-select-selected-value{
+    padding-left:0px;
+}
+.ivu-input-visible .ivu-input-selection{
+    box-shadow: none;
+    border-color:#efefef;
+}

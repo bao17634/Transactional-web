@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <classPathEntry
+            location="C:\Users\yanrong\.m2\repository\mysql\mysql-connector-java\5.1.47\mysql-connector-java-5.1.47.jar"/>
+    <context id="context1">
+        <!--指定生成的XXXMapper文件要继承的Mypper类的路径-->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin" >
+            <property name="mappers" value="com.gitee.taven.utils.MyMapper"/>
+        </plugin>
+        <!--链接数据库-->
+        <jdbcConnection
+                connectionURL="jdbc:mysql://127.0.0.1:3306/atomikos?useSSL=false&amp;allowPublicKeyRetrieval=true"
+                driverClass="com.mysql.jdbc.Driver" password="bao026099" userId="root"/>
+        <!-- 对应生成的pojo所在包 -->
+        <javaModelGenerator targetPackage="com.gitee.taven.myselfdemo.entity"
+                            targetProject="src/main/java">
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- 对应生成的mapper所在目录 -->
+        <sqlMapGenerator targetPackage="com.gitee.taven.myselfdemo.mapper.mysql_mapper.mapper_xml"
+                         targetProject="src/main/java"/>
+        <!--配置mapper对应的java映射-->
+        <javaClientGenerator targetPackage="com.gitee.taven.myselfdemo.mapper.mysql_mapper"
+                             targetProject="src/main/java" type="XMLMAPPER"/>
+        <!--添加要生成的数据库对应表名-->
+        <table schema="public" tableName="house" domainObjectName="House">
+        </table>
+        <table schema="public" tableName="p_account" domainObjectName="PAccount">
+        </table>
+    </context>
+</generatorConfiguration>

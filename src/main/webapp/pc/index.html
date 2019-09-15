@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>TAS物流自动化管理系统</title>
+    <script type="text/javascript" src="dist/vue.js"></script>
+    <!--<script type="text/javascript" src="js/vue-resource.js"></script>-->
+    <script type="text/javascript" src="js/my.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="text/javascript" src="./dist/iview.js"></script>
+    <link rel="stylesheet" type="text/css" href="./dist/iview.css">
+    <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_434942_dmmdup35qknjyvi.css">
+    <!--<link rel="SHORTCUT ICON" href="image/favicon.ico"/>-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/common.js"></script>
+
+    <style>
+        .ivu-menu-vertical.ivu-menu-light:after {
+            background: none;
+        }
+
+        .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) {
+            border-right: none;
+            border-left: 2px solid #2d8cf0;
+            background-color: #fdfdfd;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing:border-box;
+        }
+        .ivu-menu-item{
+            border-left: 2px solid #efefef;
+            border-right: none;
+        }
+        .ivu-menu-light.ivu-menu-vertical .ivu-menu-item{
+            border: none;
+            border-left: 2px solid #efefef;
+        }
+        /*顶部空白区，转css无效*/
+        .ivu-tabs-bar{
+            margin-bottom:0px;
+        }
+    </style>
+</head>
+<body>
+<div class="content" id="content">
+    <!--左侧菜单内容-->
+    <div class="left" id="left">
+        <!--切换左右的宽度-->
+        <div style="height: 50px;width: 220px; z-index: 1;background-color:#1b8fda" v-if="!modal6"></div>
+        <div class="l_top" id="l_top" style="position: fixed;top: 0px;left: 0px;width: 220px;z-index: 9999">
+            <div class="l_title">
+                <a href="#"><img id="target" src="images/lie.png" onclick="demo()" style="vertical-align:middle;  "></a>
+                <span class="wz">TAS物流自动化管理系统</span>
+            </div>
+        </div>
+
+        <!--左侧菜单-->
+        <!--<div class="l_bt">
+            <div style="height: 44px;"></div>
+            <div id="rootDiv" style="background: none;">
+
+                <i-Menu active-name="1-1" accordion :open-names="[menuData[0].id]" @on-select="menuSelect"  style="background: none">
+                    <Submenu  v-for="item in menuData" :name="item.id" >
+                        <template slot="title">
+                          <Icon :type="item.icon"></Icon>
+                            <span class="wz">{{item.text}}</span>
+                        </template>
+                        <div  style="text-decoration: none;" v-if="item.children != null">&lt;!&ndash;(mi.id+','+mi.url+','+mi.text)&ndash;&gt;
+                            <menu-item v-for="mi in item.children" class=" wz wz1" :name="mi.id">
+                                {{mi.text}}
+                            </menu-item>
+                        </div>
+                    </Submenu>
+                </i-Menu>
+
+            </div>
+        </div>-->
+        <div class="l_bt">
+            <div id="rootDiv" class="rootDiv">
+                <i-Menu style="background: none;width: 100%" v-if="menuData != null" @on-select="menuSelect">
+                    <div style="text-decoration: none;" >
+                        <Menu-Item name="li24" id="li24"  >
+                            <Icon type="ios-analytics"></Icon>
+                            <span class="wz">首页</span>
+                        </Menu-Item>
+                    </div>
+                    <!--第一级无子节点菜单-->
+                    <Menu-Item :name="firMenu.id" v-for=" firMenu in menuData"
+                               v-if="firMenu.children == null && firMenu.menuName !='看不见我'" >
+                        <Icon :type="firMenu.icon"></Icon>
+                        <span class="wz"> {{firMenu.text}}</span>
+                    </Menu-Item>
+
+                    <!--第一级有子节点菜单-->
+                    <Submenu :name="firMenu.id" v-for=" firMenu in menuData"
+                             v-if="firMenu.children != null && firMenu.menuName !='看不见我'">
+                        <template slot="title">
+                            <Icon :type="firMenu.icon"></Icon>
+                            <span class="wz"> {{firMenu.text}}</span>
+                        </template>
+                        <!--第二级菜单-->
+                        <!--第二级无子节点菜单-->
+                        <menu-item :name="secMenu.id" v-for="secMenu in firMenu.children"
+                                   v-if="secMenu.children == null && secMenu.menuName !='看不见我'"
+                                   style="padding-left:50px;"
+                        >
+                            <!--<Icon :type="secMenu.icon"></Icon>-->
+                            <span class="wz"> {{secMenu.text}}</span>
+                        </menu-item>
+
+                        <!--第二级有子节点菜单-->
+                        <Submenu :name="secMenu.id" v-for="secMenu in firMenu.children"
+                                 v-if=" secMenu.children != null && secMenu.menuName !='看不见我'" style="padding-left:50px;">
+                            <template slot="title" >
+                                <!--<Icon :type="secMenu.icon"></Icon>-->
+                                <span class="wz">  {{secMenu.text}}</span>
+                            </template>
+                            <!--第三级菜单-->
+                            <!--第三级无子节点菜单-->
+                            <menu-item :name="thirMenu.id"
+                                       v-for="thirMenu in secMenu.children"
+                                       v-if="thirMenu.children == null && thirMenu.menuName !='看不见我'"
+                                       style="padding-left:50px;"
+                            >
+                                <!--<Icon :type="thirMenu.icon"></Icon>-->
+                                <span class="wz">  {{thirMenu.text}}</span>
+                            </menu-item>
+                            <!--第三级有子节点菜单-->
+                            <Submenu :name="thirMenu.id"
+                                     v-for="thirMenu in secMenu.children"
+                                     v-if=" thirMenu.children != null && thirMenu.menuName !='看不见我'">
+                                <template slot="title">
+                                    <!--<Icon :type="thirMenu.icon"></Icon>-->
+                                    <span class="wz">{{thirMenu.text}}</span>
+                                </template>
+                            </Submenu>
+                        </Submenu>
+                    </Submenu>
+                </i-Menu>
+            </div>
+        </div>
+    </div>
+    <!--右侧内容-->
+    <div class="right" id="right">
+        <!--右侧菜单的顶部导航条-->
+        <div class="r_top"  id="r_top">
+            <!--右上角导航-->
+            <div class="daohang_r">
+                <div style="width: auto;" >当前用户：{{userName}}</div>
+
+
+
+                <a href="#">
+                    <div class="iconfont icon-admin" title="登陆人员"  @click="modal1 = true" style="font-size: 18px;"></div>
+                </a>
+
+
+
+                <a>
+                    <div class="iconfont icon-tuichu" title="退出"  @click="confirm" style="font-size: 18px;"></div>
+                </a>
+            </div>
+        </div>
+
+
+        <Modal
+                v-model="modal1"
+                title="密码修改"
+                @on-cancel="cancel"
+                style="width:40%"
+        >
+             <i-input type="password" v-model="oldPassword" placeholder="原密码..." icon="search" style="margin-bottom: 10px" ></i-input>
+            <i-input type="password" v-model="newPassword" placeholder="新密码..." icon="search" style="margin-bottom: 10px"></i-input>
+            <i-input type="password" v-model="newPasswordTwo" placeholder="确认密码..." icon="search" style="margin-bottom: 10px"></i-input>
+            <div slot = "footer">
+                <i-Button type = "primary" @click="update">
+                    保存
+                </i-Button>
+                <i-Button type = "error" @click="cancel">
+                    取消
+                </i-Button>
+            </div>
+        </Modal>
+
+        <Tabs  type="card" @on-tab-remove="removeTab"  :animated="false"  v-model="activeTab">
+            <Tab-Pane label="首页" name="首页" >
+                <iframe src="backlog/backlog.html"  name="li24"  scrolling="no" frameborder="0"
+                        :style="stylebind"></iframe>
+            </Tab-Pane>
+            <template v-for="(item,index) in mainTabs">
+                <tab-pane :label="item.text" closable :name="item.id" v-if="item.show">
+                    <!--iframe 子页面-->
+                    <iframe name="ifeam" :src="item.url" scrolling="no" frameborder="0"  :style="stylebind"   ></iframe>
+                </tab-pane>
+            </template>
+        </Tabs>
+    </div>
+</div>
+<script>
+    var vsidebar = new Vue({
+        el: "#content",
+        data: {
+            modal1: false,
+            menuData:[
+                {
+                    "id":'',
+                    "text":'',
+                    "url":null,
+                    "orderIndex":1,
+                    "icon":'',
+                    "parentId":'',
+                    "children":[
+                        {
+                            "id":'',
+                            "text":'',
+                            "url":'',
+                            "orderIndex":1,
+                            "icon":'',
+                            "parentId":'',
+                            "children":null
+                        }
+                    ]
+                }
+            ],
+            theme2: 'dark',
+            open: [],
+            active: "1-1",
+            modal6:false,
+            spinShow: false,
+            show:false,
+            activeTab:null,
+            mainTabs:[],
+            userName:[], //获取当前用户用户名
+            stylebind:{scrolling : 'auto',padding: '0px',width: '100%', height:'100%','z-index': '1',},
+            rightCol:0,
+            text:'',
+            oldPassword:'',
+            newPassword:'',
+            newPasswordTwo:'',
+        },
+        created(){
+            var that = this;
+            that.rightCol = window.document.getElementById('right').clientHeight-window.document.getElementById('r_top').clientHeight-30;
+            console.log(that.rightCol);
+            that.stylebind={scrolling : 'auto',padding: '0px',width: '100%', height:that.rightCol+'px','z-index': '1',}
+            that.$http.get('/pc/yqwl/menus/getTreeMenus').then((result) => {
+                console.log("12121",result.data);
+                console.log(result.data.isSuccess);
+                if (result.data.isSuccess){
+                    that.menuData = result.data.data;
+                    console.log("111",that.menuData);
+                }
+            });
+            that.$http.post('pc/api/v1/auth/getUserName').then((result) => {
+                console.log("fsfs",result);
+                if (result.data.isSuccess){
+                    that.userName = result.data.resultMsg;
+                }
+            });
+        },
+        methods: {
+            //主界面-退出登录
+            confirm (){
+                var that = this;
+                this.$Modal.confirm({
+                        title: '<p>退出登录？</p>',
+//                        content: '<p style="font-size: 16px;margin-top: -10px">退出登录？</p>',
+                        onOk: () => {
+                            localStorage.setItem('token', "");
+                            localStorage.setItem('refreshToken', "");
+                            location.href="login.html";
+                        },
+                            onCancel: () => {
+                            }
+                        });
+            },
+
+            update () {
+                var that = this;
+                if(that.oldPassword==null || that.oldPassword==""){
+                    this.$Message.info('老密码不能为空');
+                    return ;
+                }
+                if(that.newPassword==null || that.newPassword==""){
+                    this.$Message.info('新密码不能为空');
+                   return ;
+                }
+                if(that.newPasswordTwo==null || that.newPasswordTwo==""){
+                    this.$Message.info('确认密码不能为空"');
+                    return ;
+                }
+                if(that.newPassword!=that.newPasswordTwo ){
+                    this.$Message.info('新密码与来密码不一致');
+                    return ;
+                }
+                    const d = {
+                            oldPassword:that.oldPassword,
+                            newPassword:that.newPassword,
+                            newPasswordTwo:that.newPasswordTwo,
+                    };
+
+                    that.$http.post("pc/yqwl/user/updatePassword",d).then((result) => {
+                        console.log(result);
+                    if (result.data.isSuccess){
+                        if (result.data.data ==1) {
+                            this.$Message.info('修改成功');
+                                that.oldPassword="",
+                                that.newPassword="",
+                                that.newPasswordTwo="",
+                            that.modal1 = false;
+                        }else{
+                            this.$Message.info('原密码错误');
+                        }
+                    }
+                });
+            },
+            cancel () {
+                var that = this;
+                that.modal1 = false;
+            },
+
+            //根据名称来查找对应的菜单条目
+            getMenuItem:function(name){
+                for(var sm=0; sm<this.menuData.length; sm++){
+                    if(this.menuData[sm].children != null){
+                        for(var mi=0; mi<this.menuData[sm].children.length; mi++){
+                            if(this.menuData[sm].children[mi].id == name){
+                                return this.menuData[sm].children[mi];
+                            }else {
+                                if(this.menuData[sm].children[mi].children != null){
+                                    console.log(this.menuData[sm].children[mi]);
+                                    for(var it=0; it<this.menuData[sm].children[mi].children.length; it++){
+                                        if(this.menuData[sm].children[mi].children[it].id == name){
+                                            return this.menuData[sm].children[mi].children[it];
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }else {
+                        if(this.menuData[sm].id==name)return this.menuData[sm];
+                    }
+                }
+                return {};//这个应该不可能发生
+               /* for(var sm=0; sm<this.menuData.length; sm++){
+                    if(this.menuData[sm].children != null){
+                        for(var mi=0; mi<this.menuData[sm].children.length; mi++){
+                            if(this.menuData[sm].children[mi].id==name)return this.menuData[sm].children[mi];
+                        }
+                    }
+                }
+                return {};//这个应该不可能发生*/
+            },
+            //根据名称查找对应的Tab页。
+            getTab:function(name){
+                for(var i=0; i<this.mainTabs.length; i++){
+                    if(this.mainTabs[i].id==name)return this.mainTabs[i];
+                }
+                return null;//没有找到
+            },
+            //设置Tab页不可见。
+            removeTab:function (name){
+                var tab = this.getTab(name);
+
+                if(tab!=null){
+                    tab.show=false;
+                }
+            },
+            //菜单点击
+            menuSelect:function(name){
+                var that = this;
+                var tab = that.getTab(name);
+                if(name == "li24"){
+                    that.activeTab="首页";
+                }else {
+                    if(tab==null){
+                        var mi = that.getMenuItem(name);
+                        var mi = $.extend({},mi,{show:true});
+                        that.mainTabs.push(mi);
+                    }
+                    else{
+                        console.log(tab);
+                        tab.show=true;
+                    }
+                    that.activeTab=name;
+                }
+            },
+        }
+    });
+</script>
+</body>
+</html>

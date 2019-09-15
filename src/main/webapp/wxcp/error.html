@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>错误提示</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/vue.min.js"></script>
+    <script type="text/javascript" src="js/vant.min.js"></script>
+    <script type="text/javascript" src="js/axios.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/vant.css">
+    <link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_809572_c01hh82d18.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_791212_u4owl5aatvf.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+        #app {
+            text-align: center;
+        }
+
+        .error-icon {
+            font-size: 50px;
+            color: #fff;
+            margin-top: 50%
+        }
+        .error-icon  span{
+            font-size: 80px;
+        }
+        .error-txt{
+            width: 80%;
+            margin: 0px auto;
+            color: #fff;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body style="background: #4b77b1">
+<div id="app">
+    <div class="error-icon"><span class="iconfont icon-shangxin"></span></div>
+    <div class="error-txt">很抱歉！！由于您在职能管理平台没有账号，暂时不能使用会议系统，请联系管理员申请账号！</div>
+
+</div>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {}
+    })
+</script>
+
+
+</body>
+</html>

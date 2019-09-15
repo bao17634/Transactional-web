@@ -1,0 +1,772 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    font-family: 微软雅黑;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+.bqclass {
+    position: relative;
+    top: -5px;
+}
+
+.xia .ivu-icon-ios-arrow-forward:before {
+    font-family: "iconfont" !important;
+    content: "\e63f" !important;
+    font-size: 12px;
+}
+
+.shaixuan:hover {
+    color: #1199ff;
+}
+
+.ivu-collapse > .ivu-collapse-item > .ivu-collapse-header i {
+    position: absolute;
+    left: 60px;
+    top: 12px;
+
+}
+
+.ivu-collapse:hover > .ivu-collapse-item > .ivu-collapse-header i {
+    color: #1199ff;
+}
+
+.ivu-collapse-header:hover > span {
+    color: #1199ff;
+}
+
+.ivu-collapse > .ivu-collapse-item > .ivu-collapse-header {
+    border-bottom: 1px dashed #efefef;
+}
+
+/*.ivu-collapse > .ivu-collapse-item > .ivu-collapse-header > i{*/
+/*display: inline-block;*/
+/*transition: 0.2s;*/
+/*transform: rotate(90deg);*/
+/*-o-transform: rotate(90deg);*/
+/*-webkit-transform: rotate(90deg);*/
+/*-moz-transform: rotate(90deg);*/
+/*}*/
+.ivu-collapse > .ivu-collapse-item.ivu-collapse-item-active > .ivu-collapse-header > i {
+    display: inline-block;
+    transition: 0.2s;
+    -webkit-animation: anticlockwiseRotate 2s infinite;
+    /* 设置旋转中心为左上角 逆时针旋转90度*/
+    transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+}
+
+.baitiao {
+    width: 90%;
+    height: 35px;
+    position: absolute;
+    top: 0px;
+    left: 130px;
+    z-index: 9;
+    table-layout: fixed;
+    word-break: keep-all; /* 不换行 */
+    white-space: nowrap; /* 不换行 */
+    overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow: ellipsis; /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+}
+
+.baitiao:hover > .shuaxin {
+    color: #1199ff;
+}
+
+.shuaxin {
+    color: white;
+    width: 180px;
+    height: 35px;
+    line-height: 40px;
+    font-family: 微软雅黑;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 40px;
+    z-index: 999;
+}
+
+.ivu-table-cell {
+    position: relative;
+}
+
+.ivu-table-sort {
+    width: 25px;
+    height: 15px;
+    padding: 4px 0px;
+    text-align: right;
+    position: absolute;
+    right: 0px;
+    bottom: 7px;
+}
+
+.ivu-collapse {
+    background: none;
+    margin: 0px 40px;
+    border: none;
+    padding: 0px;
+}
+
+.ivu-collapse > .ivu-collapse-item > .ivu-collapse-header {
+    padding-left: 0px;
+}
+
+.ivu-collapse-header {
+    border-bottom: 1px dashed #eee;
+}
+
+.shaixuan {
+    font-size: 14px !important;
+}
+
+.zhankai-shaixuan {
+    margin-top: -10px;
+    height: 100%;
+}
+.red {
+    width: 2px;
+    font-size: 3px;
+    transform: scale(0.633333);
+    color: red;
+    margin-left: 5px
+}
+.sousuo {
+    width: 100%;
+    padding: 5px 0px;
+    border-bottom: 1px dashed #eeeeee;
+}
+
+.sousuo-tanchu {
+    width: 90%;
+    padding: 5px 5%;
+    border-bottom: 1px dashed #eeeeee;
+}
+
+.sousuo_lia_date1 {
+    width: 33%;
+    display: inline-block;
+    position: relative;
+}
+
+.sousuo_lia_date_text {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+.sousuo_lia_date1 .ivu-select-selection {
+    width: 100%;
+    display: inline-block;
+    vertical-align: text-bottom;
+    box-shadow: none;
+    border: 1px solid #cccccc;
+    background-color: #f9f9f9;
+    color: #999999;
+    border-radius: 5px;
+    padding-left: 7px;
+}
+.ivu-input[disabled], fieldset[disabled] .ivu-input{
+    background: none;
+}
+.sousuo_lia_date1 input {
+    height: 30px;
+    display: inline-block;
+    width: 100%;
+    box-shadow: none;
+    border: 1px solid #cccccc;
+    /*background: url("../images/ss.png") no-repeat right;*/
+    background-color: #f9f9f9;
+    color: #999999;
+}
+
+.sousuo_lia_date1 .textbox-invalid {
+    margin: 0px;
+    padding: 0px;
+    width: 270px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    background: none;
+}
+
+.sousuo_lia_date1 .combo-arrow {
+    background-color: #f9f9f9;
+    color: black;
+    position: absolute;
+    right: 0px;
+}
+
+.sousuo_lia_date1 .textbox {
+    border: 1px solid #cccccc;
+}
+
+.sousuo_lia_date1 .textbox-addon .textbox-addon-right {
+    background-color: #f9f9f9;
+}
+
+.sousuo_lia_date1 .textbox .combo {
+    background-color: #f9f9f9;
+    border: 1px solid #cccccc;
+}
+
+.shijian {
+    display: inline-block;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: right;
+    width: 80px;
+    font-size: 14px;
+    vertical-align: text-bottom;
+}
+
+.inp {
+    display: inline-block;
+    vertical-align: text-bottom;
+    width:60%;
+}
+
+.butt {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #1199ff;
+}
+.butt1 {
+    display: inline-block;
+    border-radius: 5px;
+    /*background-color: #1199ff;*/
+}
+/*.butt .ivu-btn{
+    background-color: #f8f8f8;
+    border: 1px solid #dddddd;
+}*/
+.tabl {
+    margin-top: 5px;
+    width: 100%;
+}
+
+.paging {
+    height: 45px;
+    width: 100%;
+    background-color: #f6f6f6;
+    position: fixed;
+    bottom: 0px;
+    padding-right: 20px;
+    padding-left: 50px;
+    line-height: 45px;
+}
+
+.ivu-table td {
+    font-size: 14px;
+    font-family: 微软雅黑;
+    height: 40px;
+    line-height: 40px;
+
+}
+
+.ivu-table th {
+    background-color: #f5fbff;
+    font-family: 微软雅黑;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1.5px solid #1199ff;
+    font-size: 14px;
+    border-right: 1px solid #e9eef2;
+    font-weight: 500;
+
+}
+
+.ivu-table {
+    height: auto;
+    z-index: -1;
+}
+
+.ivu-table-wrapper {
+    border: none;
+    border-bottom: none;
+}
+
+.ivu-checkbox-inner {
+    position: relative;
+    top: 3px;
+    left: 0px;
+}
+
+.ivu-table:after {
+    z-index: -1;
+}
+
+.ivu-table:before {
+    z-index: -1;
+}
+
+.ivu-table .demo-table-info-row td {
+    background-color: #ebf7ff;
+    font-weight: 700;
+}
+
+.tabl .ivu-checkbox-checked .ivu-checkbox-inner {
+    border-color: #2d8cf0;
+    background-color: #fff;
+    border: 2px solid #2d8cf0;
+}
+
+.tabl .ivu-checkbox:hover .ivu-checkbox-inner {
+    border-color: #efefef
+}
+
+.tabl .ivu-checkbox-inner {
+    border-radius: 20px;
+    width: 23px;
+    height: 23px;
+    top: 0px;
+    left: 8px;
+    text-align: center;
+    line-height: 20px;
+    background-color: #ffffff;
+    content: '';
+    border: 2px solid #efefef;
+}
+
+.tabl .ivu-checkbox-checked .ivu-checkbox-inner:after {
+    content: '';
+    display: table;
+    width: 6px;
+    height: 12px;
+    position: absolute;
+    top: 2px;
+    left: 7px;
+    border: 2px solid #fff;
+    border-top: 0;
+    border-left: 0;
+    border-color: #2d8cf0;
+    -ms-transform: rotate(45deg) scale(1);
+    transform: rotate(45deg) scale(1);
+    transition: all .2s ease-in-out
+}
+
+.tabl .ivu-checkbox-inner:after {
+    content: '';
+    display: table;
+    width: 6px;
+    height: 12px;
+    position: absolute;
+    top: 2px;
+    left: 7px;
+    border: 2px solid #fff;
+    border-top: 0;
+    border-left: 0;
+    border-color: #efefef;
+    -ms-transform: rotate(45deg) scale(1);
+    transform: rotate(45deg) scale(1);
+    transition: all .2s ease-in-out
+}
+
+.tabl .ivu-checkbox-checked:hover .ivu-checkbox-inner {
+    border-color: #2d8cf0;
+    border: 2px solid #2d8cf0;
+}
+
+/*主页面样式*/
+
+/*弹出页面样式*/
+.tanchu {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 100%;
+    width: 45%;
+    float: right;
+    /*box-shadow: -5px 0px 25px #d6d6d6;*/
+    z-index: 99;
+    box-shadow: -5px 0px 15px #d6d6d6;
+    background-color: #ffffff;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.tit_tc {
+    height: 42px;
+    border-bottom: 1px solid silver;
+}
+
+.tit_bt {
+    display: inline-block;
+    font-family: '微软雅黑';
+    height: 44px;
+    line-height: 44px;
+    font-size: 16px;
+    margin: 0px 15px;
+    color: #000000;
+    font-weight: 500;
+}
+
+.tanchu-small {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    height: 100%;
+    width: 40%;
+    float: right;
+    /*box-shadow: -5px 0px 25px #d6d6d6;*/
+    z-index: 999;
+    box-shadow: -5px 0px 15px #d6d6d6;
+    background-color: #ffffff;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.guanbi {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    line-height: 44px;
+    float: right;
+    color: #464646;
+    font-size: 14px;
+    text-align: center;
+}
+
+.guanbi:hover {
+    background-color: #efefef;
+    color: #000000;
+}
+
+.menu {
+    margin-top: 5px;
+    height: 91vh;
+    overflow-y: auto;
+    padding-bottom: 50px;
+}
+
+.zengjia {
+    font-family: 微软雅黑;
+    width: 40%;
+    padding: 2px 20px;
+    display: inline-block;
+    margin: 5px 20px;
+    vertical-align: top;
+
+}
+
+.zdm {
+    font-size: 12px;
+    width: 50%;
+    display: block;
+}
+
+.shuru .ivu-input {
+    display: inline-block;
+    width: 100%;
+    height: 32px;
+    line-height: 1.5;
+    padding: 4px 0px;
+    font-size: 14px;
+    border: none;
+    border-radius: 0px;
+    color: #495060;
+    border-bottom: 1px solid #efefef;
+}
+
+.shuru .ivu-input:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0px rgba(45, 140, 240, .2);
+    border-bottom: 2px solid #1199ff;
+}
+
+.shuru .ivu-select-selection {
+    border: none;
+    border-bottom: 1px solid #efefef;
+    border-radius: 0px;
+}
+
+.shuru .ivu-select-visible .ivu-select-selection {
+    box-shadow: none;
+    border-color: #efefef;
+    border-bottom: 2px solid #1199ff;
+
+}
+
+.shuru .ivu-select-single .ivu-select-selection .ivu-select-placeholder, .ivu-select-single .ivu-select-selection .ivu-select-selected-value {
+    padding-left: 0px;
+}
+
+.shuru .ivu-input-visible .ivu-input-selection {
+    box-shadow: none;
+    border-color: #efefef;
+    border-bottom: 2px solid #1199ff;
+
+}
+
+.tc_footer {
+    width: 45%;
+    height: 44px;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    background-color: white;
+    border-top: 1px solid #efefef;
+    z-index: 9;
+}
+
+.tc_footer-small {
+    width: 40%;
+    height: 44px;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    background-color: white;
+    border-top: 1px solid #efefef;
+    z-index: 9;
+}
+
+.tc_bc {
+    height: 44px;
+    line-height: 44px;
+    width: 100px;
+    border-top: 1px solid #efefef;
+    background-color: #1199ff;
+    float: right;
+    text-align: center;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.tc_qx {
+    height: 44px;
+    line-height: 44px;
+    width: 100px;
+    border-top: 1px solid #efefef;
+    background-color: #e84d07;
+    float: right;
+    text-align: center;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.sstj {
+    position: relative;
+    top: -5px;
+    padding: 0px;
+    padding-right: 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.xuanzhong {
+    color: #1199ff;
+}
+
+.wenbenyu {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.wenbenyu-title {
+    border-left: 5px solid #1199ff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 5px;
+    padding-left: 35px;
+}
+
+.wenbenyu-text {
+    width: 90%;
+    margin-left: 40px;
+    margin-top: 5px;
+}
+
+.zhiding {
+    width: 100%;
+    padding: 5px 40px;
+}
+.zhidinggongqi {
+    width: 45%;
+    display: inline-block;
+    padding: 5px;
+    margin-left: 30px;
+}
+
+.zhiding-zdm {
+    width: 18%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.zhiding-shuru {
+    width: 50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.bq {
+    color: #888888;
+}
+
+.sj {
+    color: #333333;
+}
+
+.red {
+    width: 2px;
+    font-size: 3px;
+    transform: scale(0.633333);
+    color: red;
+    margin-left: 5px
+}
+
+.title {
+    width: 90%;
+    margin-top: 20px;
+    border-left: 5px solid #1199ff;
+}
+
+.title span {
+    font-size: 16px;
+    padding-left: 35px;
+    font-family: 微软雅黑;
+}
+
+.wenjian {
+    width: 32%;
+    display: inline-block;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.wenjian img {
+    width: 60px;
+    height: 50px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.wenjian-tb {
+    width: 32%;
+    display: inline-block;
+    margin-bottom: 10px;
+    cursor: pointer;
+
+}
+
+.wenjian-tb img {
+    width: 40px;
+    height: 50px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0px 10px;
+}
+
+.wenjian-name {
+    width: 35%;
+    line-height: 50px;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.shanchu{
+    font-size: 14px;
+    position: relative;
+    top: -5px;
+}
+.wenjian:hover> .shanchu{
+    color: red;
+    cursor: pointer;
+}
+.wenjian-tb:hover> .shanchu{
+    color: red;
+    cursor: pointer;
+
+}
+
+.modal-sousuo{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.pingfen{
+    line-height: 30px;
+}
+.pingfendiv{
+    margin: 5px 40px;
+}
+.upload_wenzi {
+    display: inline-block; /*内联对象需加*/
+    width: 8em;
+    margin-left: 10px;
+    word-break: keep-all; /* 不换行 */
+    white-space: nowrap; /* 不换行 */
+    overflow: hidden; /* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow: ellipsis; /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+    color: #6c7485;
+}
+
+.color-doc {
+    color: #2A5699;
+}
+
+.color-docx {
+    color: #2A5699;
+}
+
+.color-xlsx {
+    color: #1F7246;
+}
+
+.color-xls {
+    color: #1F7246;
+}
+
+.color-pptx {
+    color: #D04626;
+}
+
+.color-ppt {
+    color: #D04626;
+}
+
+.color-pdf {
+    color: #F68A1E;
+}
+
+.color-gif {
+    color: #A13633;
+}
+
+.color-jpg {
+    color: #A13633;
+}
+
+.color-png {
+    color: #A13633;
+}
+
+.color-txt {
+    color: #8DB7C8;
+}
+.demo-spin-icon-load{
+    animation: ani-demo-spin 1s linear infinite;
+}
+@keyframes ani-demo-spin {
+    from { transform: rotate(0deg);}
+    50%  { transform: rotate(180deg);}
+    to   { transform: rotate(360deg);}
+}
+.demo-spin-col{
+    height: 100px;
+    position: relative;
+    border: 1px solid #eee;
+}

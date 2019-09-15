@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NASA基础管理系统</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script src="js/axios.min.js"></script>
+    <!--<script src="js/axios.min.js"></script>-->
+    <script src="js/common.js"></script>
+    <script type="text/javascript" src="iview/iview.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="iview/styles/iview.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+
+    <style>
+        ::-webkit-scrollbar {
+            width: 0px
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="box" id="loginDiv">
+    <div style="height: 100%;width: 100%;position: fixed;top: 0px;left: 0px;background-color: rgba(0,0,0,0.5);text-align: center;padding-top:25%;color: #ffffff;font-weight: 700;"
+         v-show="spinShow">
+        <div>正在加载中</div>
+    </div>
+    <div class="top"></div>
+    <div class="title">
+        <!--<div class="logo"></div>-->
+        <div class="text">NASA基础管理系统</div>
+    </div>
+    <div class="bottom">
+        <Icon type="person"style="position: relative;left:7px;font-size: 20px;top:3px;color: #bfbfbf;z-index: 99"></Icon>
+        <input class="userName" id="username" v-model="name" placeholder="用户名" @keyup.enter="login">
+        <Icon type="ios-unlocked" style="position: relative;font-size: 20px;top:3px;color: #bfbfbf;z-index: 99"></Icon>
+        <input class="passWord" id="password" type="password" placeholder="密码" v-model="password" @keyup.enter="login">
+        <!--<input class="passWord" id="domainName" type="text"  placeholder="域" v-model="domainName"-->
+        <!--style="width: 100px"  @keyup.enter="login">-->
+        <Icon type="ios-world-outline" style="position: relative;left:7px;font-size: 20px;top:3px;color: #bfbfbf;z-index: 99"></Icon>  <Select v-model="domainName" style="width:100px" class="userName">
+            <Option v-for="item in domainNameList" :value="item.domainName" :key="item.domainName">{{ item.domainName }}</Option>
+        </Select>
+        <button type="button" class="button" @click="login">登陆</button>
+        <div v-if="isError">{{error_msg}}</div>
+    </div>
+
+</div>
+
+<script>
+    new Vue({
+        el: '#loginDiv',
+        data: {
+            spinShow: false,
+            name: "",
+            password: "",
+            domainName: "DBA",
+            domainNameList: [{
+                domainName: 'MLMS',
+                domainName:"DBA"
+            }
+            ],
+            isError: false,
+            error_msg: ""
+        },
+        created() {
+            this.login();
+        },
+        methods: {
+            login() {
+                var that = this;
+                that.$http.post('wxcp/user/testToken', {}).then((result) => {
+                    console.log("aquaqu",result);
+                    if (result.data.isSuccess) {
+
+                    } else {
+                        that.$Message.info(result.data.resultMsg);
+                    }
+                });
+            }
+        }
+    })
+</script>
+</body>
+</html>

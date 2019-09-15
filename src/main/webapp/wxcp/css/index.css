@@ -1,0 +1,202 @@
+html {
+    font-family: '微软雅黑';
+    overflow: hidden;
+    height: 100%;
+}
+[v-cloak] {
+    display: none;
+}
+body {
+    overflow: hidden;
+    height: 100%;
+}
+
+body a {
+    text-decoration: none;
+}
+
+#content {
+    overflow: hidden;
+    *zoom: 1;
+    height: 100%;
+}
+
+.paging {
+    height: 50px;
+    line-height: 50px;
+}
+
+.left {
+    height: 100%;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    width: 220px;
+    display: inline-block;
+    vertical-align: middle;
+    transition: width 0.1s;
+    -moz-transition: width 0.1s; /* Firefox 4 */
+    -webkit-transition: width 0.1s; /* Safari 和 Chrome */
+    -o-transition: width 0.1s;
+    background-color: #f9f9f9;
+    overflow: hidden;
+    z-index: 99;
+}
+
+.right {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    vertical-align: middle;
+    transition: width 0.5s;
+    -moz-transition: width 0.5s; /* Firefox 4 */
+    -webkit-transition: width 0.5s; /* Safari 和 Chrome */
+    -o-transition: width 0.5s;
+    margin-left: 220px;
+    z-index: 99;
+}
+
+.l_title {
+    color: #ffffff;
+    line-height: 50px;
+    width: 90%;
+    margin: 0px auto;
+    padding: 0px;
+    text-align: center;
+    font-size: 14px;
+
+}
+
+.l_lie {
+    line-height: 50px;
+    width: 100%;
+    margin: 0px auto;
+    text-align: left;
+    overflow: hidden;
+}
+
+.l_lie ul {
+    margin: 0px auto;
+    padding: 0px;
+    list-style: none;
+    overflow: hidden;
+}
+
+.l_lie li {
+    margin: 0px;
+    padding: 0px 0px 0px 20%;
+    text-indent: 0px;
+    overflow: hidden;
+    box-sizing: border-box;
+    border-left: 3px solid #f9f9f9;
+}
+
+.l_lie li:hover {
+    box-sizing: border-box;
+    background-color: #f1f1f1;
+    color: #000000;
+}
+
+.l_lie a {
+    text-decoration: none;
+    color: #878787;
+}
+
+.l_top {
+    margin: 0px;
+    padding: 0px;
+    background-repeat: repeat-x;
+    height: 50px;
+    overflow: hidden
+}
+
+.r_top {
+    margin: 0px;
+    padding: 0px;
+    background-color: #1199ff;
+    background-repeat: repeat-x;
+    height: 50px;
+    overflow: hidden;
+    z-index: 99999;
+}
+
+.r_top a {
+    text-decoration: none;
+}
+
+.text {
+    vertical-align: middle;
+    margin: 0px;
+    padding: 0px;
+}
+
+.daohang_r {
+    text-align: right;
+    width: 850px;
+    margin: 0px;
+    padding: 0px;
+    float: right;
+}
+
+.daohang_r div {
+    width: 76px;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    line-height: 50px;
+    display: inline-block;
+    color: #ffffff;
+}
+
+.daohang_r div:hover {
+     background-color: #31b0d5;
+     background-repeat: repeat-x;
+
+ }
+
+.click {
+    border-left: 1px solid #31b0d5;
+}
+
+
+#rootDiv a {
+    color: #999999;
+}
+
+#rootDiv a:hover {
+    text-decoration: none;
+
+}
+
+#rootDiv:visited {
+    text-decoration: none
+}
+
+#li1:hover, #li2:hover, #li3:hover, #li4:hover, #li5:hover, #li6:hover, #li7:hover, #li8:hover, #li9:hover, #li10:hover, #li11:hover, #li12:hover, #li24:hover {
+    color: #000000;
+}
+
+.wz1 {
+    text-indent: 15px;
+    color: #999999;
+}
+
+.wz1:hover {
+    color: #000000;
+
+}
+
+.wz {
+    text-indent: 15px;
+    text-decoration: none
+}
+
+.wz :disabled {
+    text-decoration: none
+}
+
+.menu {
+    width: 100%;
+    background-color: #f9f9f9;
+    padding-top: 5px;
+}

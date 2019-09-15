@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-hans" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script type="text/javascript" src="../dist/vue.js"></script>
+    <script type="text/javascript" src="../dist/iview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../dist/iview.css">
+    <link rel="stylesheet" type="text/css" href="../css/themes.css">
+    <link rel="stylesheet" type="text/css" href="menu.css">
+    <link type="text/css" href="../css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_865861_9smunczmmpg.css">
+    <script src="../js/axios.min.js"></script>
+    <script src="../js/common.js"></script>
+    <title>菜单管理</title>
+</head>
+<body>
+<div class="content" id="content" v-cloak>
+    <!--搜索显示 刷新-->
+    <div class="baitiao">
+        <Tag v-for="item in count" :key="item.count" :name="item.name" closable @on-close="handleClose2" class="bqclass"><span class="bq">{{ item.name }}:</span><span class="sj">{{ item.count }}</span></Tag>
+        <span class="iconfont icon-zhongxinjiazai shuaxin" @click="resetMenu">刷新</span>
+    </div>
+    <!--搜索-->
+    <Collapse @on-change="panelChange" class="xia">
+        <Panel name="1">
+            <span class="shaixuan"> {{panelName}}</span>
+            <div slot="content" class="zhankai-shaixuan">
+                <div class="sousuo">
+                    <div class="sousuo_lia_date1">
+                        <span class="shijian">搜索：</span>
+                        <div class="inp">
+                            <i-input v-model="sText" placeholder="菜单名称..." icon="search" @on-enter="queryMenu()"></i-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Panel>
+    </Collapse>
+    <!--按钮-->
+    <div style="display:block;margin: 10px 40px">
+        <div class="butt">
+            <i-Button  icon="md-add" @click="addshow()">添加</i-Button>
+        </div>
+        <div class="butt">
+            <i-Button  icon="md-create"  @click="editshow()">编辑</i-Button>
+        </div>
+        <div class="butt">
+            <i-Button  icon="ios-trash" @click="delShow()">删除</i-Button>
+        </div>
+        <div class="butt">
+            <i-Button  icon="ios-send" @click="download()">导出</i-Button>
+        </div>
+    </div>
+    <!--表格区-->
+    <div class="tabl">
+        <i-table :columns="columns1" :data="data1"
+                 :height="tableHeight" ref="table" @on-selection-change="selectAction"
+                 :row-class-name="rowClassName" @on-sort-change="orderBy" @on-row-click="rowClick"
+        ></i-table>
+    </div>
+    <!--页码区-->
+    <div class="paging">
+        <Page style="float: right" show-total show-elevator show-sizer
+              :total="totalCount" :page-size-opts="pageSizeOpts" :page-size="pageSize"
+              :current.sync="currentCount" @on-page-size-change="pageSizeChang" @on-change="changeMenusPage"
+        ></Page>
+    </div>
+    <!--新建 -->
+    <transition name="custom-classes-transition" enter-active-class="animated fadeInRight"
+                leave-active-class="animated fadeOutRight">
+        <div v-if="adding" class="tanchu">
+            <div class="tit_tc">
+                <span class="tit_bt">添加</span>
+                <span class="iconfont icon-guanbi1 guanbi " @click="adding= false;maskshow=false"></span>
+            </div>
+
+            <div class="menu">
+                <div class="zengjia">
+                    <div class="zdm">菜单名称:<Icon type="ios-medical" class="red"></Icon>
+                    </div>
+                    <div class="shuru">
+                        <i-Input v-model="aText" size="large" placeholder="请输入"></i-Input>
+                    </div>
+                </div>
+                <div class="zengjia">
+                    <div class="zdm">菜单图标:</div>
+                    <div class="shuru">
+                        <i-Input v-model="aIcon" size="large" placeholder="请输入"></i-Input>
+                    </div>
+                </div>
+                <div class="zengjia">
+                    <div class="zdm">菜单排序:<Icon type="ios-medical" class="red"></Icon></div>
+                    <div class="shuru">
+                        <i-Input v-model="aOrderIndex" size="large" placeholder="请输入"></i-Input>
+                    </div>
+                </div>
+                <div class="zengjia">
+                    <div class="zdm">父级菜单ID:<Icon type="ios-medical" class="red"></Icon></div>
+                    <div class="shuru">
+                        <template>
+                            <i-select v-model="parentId">
+                                <i-option v-for="item in fMenuList" :value="item.id" :key="item.text">{{ item.text }}
+                                </i-option>
+                            </i-select>
+                        </template>
+                    </div>
+                </div>
+                <div class="zengjia">
+                    <div class="zdm">菜单权限:</div>
+                    <div class="shuru">
+                        <template>
+                            <i-select v-model="per" clearable>
+                                <i-option v-for="item in perList" :value="item.id" :key="item.permCode">{{ item.permCode }}
+                                </i-option>
+                            </i-select>
+                        </template>
+                    </div>
+                </div>
+                <div class="zengjia">
+                    <div class="zdm">菜单级别:</div>
+                    <div class="shuru">
+                        <template>
+                            <i-select v-model="domainCode" clearable>
+                                <i-option v-for="item in domainCodeList" :value="item.value" :key="item.label">{{ item.label}}
+                                </i-option>
+                            </i-select>
+                        </template>
+                    </div>
+                </div>
+                <div class="zengjia">
+                    <div class="zdm">菜单连接:</div>
+                    <div class="shuru">
+                        <i-Input v-model="aUrl" size="large" placeholder="请输入"></i-Input>
+                    </div>
+                </div>
+
+                <div class="tc_footer">
+                    <div class="tc_bc" @click="addMenusSave()">保 存</div>
+                    <div class="tc_qx" @click="addMenusClose()">取 消</div>
+                </div>
+            </div>
+        </div>
+    </transition>
+    <!--编辑-->
+    <transition name="custom-classes-transition" enter-active-class="animated fadeInRight"
+                leave-active-class="animated fadeOutRight">
+        <div v-if="editing" class="tanchu">
+            <div class="tit_tc">
+                <span class="tit_bt">编辑</span>
+                <span class="iconfont icon-guanbi1 guanbi " @click="editing= false;maskshow=false"></span>
+            </div>
+
+            <div class="menu">
+                <div class="zengjia">
+                    <div class="zdm">菜单名称：<Icon type="ios-medical" class="red"></Icon></div>
+                    <div class="shuru">
+                        <i-Input v-model="eText" size="large" placeholder="请输入"></i-Input>
+                    </div>
+                </div>
+                <div class="zengjia">
+                    <div class="zdm">菜单图标:</div>
+                    <div class="shuru">
+                        <i-Input v-model="eIcon" size="large" placeholder="请输入"></i-Input>
+                    </div>
+                </div>
+                <div class="zengjia">
+                    <div class="zdm">菜单排序:<Icon type="ios-medical" class="red"></Icon></div>
+                    <div class="shuru">
+                        <i-Input v-model="eOrderIndex" size="large" placeholder="请输入"></i-Input>
+                    </div>
+                </div>
+                <div class="zengjia">
+                    <div class="zdm">父级菜单ID:<Icon type="ios-medical" class="red"></Icon></div>
+                    <div class="shuru">
+                        <template>
+                            <i-select v-model="parentId">
+                                <i-option v-for="item in fMenuList" :value="item.id" :key="item.text">{{ item.text }}
+                                </i-option>
+                            </i-select>
+                        </template>
+                    </div>
+                </div>
+                <div class="zengjia">
+                    <div class="zdm">菜单权限:</div>
+                    <div class="shuru">
+                        <template>
+                            <i-select v-model="per" clearable>
+                                <i-option v-for="item in perList" :value="item.id" :key="item.permCode">{{ item.permCode }}
+                                </i-option>
+                            </i-select>
+                        </template>
+                    </div>
+                </div>
+                <div class="zengjia">
+                    <div class="zdm">菜单级别:</div>
+                    <div class="shuru">
+                        <template>
+                            <i-select v-model="domainCode" clearable>
+                                <i-option v-for="item in domainCodeList" :value="item.value" :key="item.label">{{ item.label}}
+                                </i-option>
+                            </i-select>
+                        </template>
+                    </div>
+                </div>
+                <div class="zengjia">
+                    <div class="zdm">菜单连接:</div>
+                    <div class="shuru">
+                        <i-Input v-model="eUrl" size="large" placeholder="请输入"></i-Input>
+                    </div>
+                </div>
+
+                <div class="tc_footer">
+                    <div class="tc_bc" @click="editMenusSave()">保 存</div>
+                    <div class="tc_qx" @click="editMenusClose()">取 消</div>
+                </div>
+            </div>
+        </div>
+    </transition>
+
+    <!--弹出的遮罩（透明）-->
+    <div class="mask" v-if="maskshow"
+         style=" position: absolute;top: 0px;left: 0px;width: 100%;height: 100%;
+                            background-color: #ffffff; opacity: 0;z-index: 9;">
+    </div>
+    <!--二級遮罩（透明）-->
+    <div class="mask" v-if="itmeMaskshow"
+         style=" position: absolute;top: 0px;left: 0px;width: 100%;height: 100%;
+                            background-color: #ffffff; opacity: 0;z-index: 990;">
+    </div>
+    <!--保存遮罩（透明）-->
+    <div class="mask" v-if="saveMaskShow"
+         style=" position: absolute;top: 0px;left: 0px;width: 100%;height: 100%;
+                            background-color: #ffffff; opacity: 0.7;z-index: 99999;">
+        <Col class="demo-spin-col" span="8">
+        <Spin fix>
+            <Icon type="load-c" size=30 class="demo-spin-icon-load"></Icon>
+        </Spin>
+        </Col>
+    </div>
+    <!--半拉遮罩（透明）-->
+    <div class="mask" v-if="banlaMaskShow"
+         style=" position: absolute;top: 0px;left: 0px;width:55%;float:right;height: 100%;
+                            background-color: #ffffff; opacity: 0.7;z-index: 99999;margin-left: 45%">
+        <Col class="demo-spin-col" span="8">
+        <Spin fix>
+            <Icon type="load-c" size=18 class="demo-spin-icon-load"></Icon>
+        </Spin>
+        </Col>
+    </div>
+</div>
+<script type="text/javascript" src="menu.js"></script>
+</body>
+</html>

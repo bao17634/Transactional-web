@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TAS物流自动化管理系统</title>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="js/vue-resource.js"></script>
+    <script type="text/javascript" src="iview/iview.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="iview/styles/iview.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_791212_8yd4c5re5lr.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_896994_y5zni97m4re.css">
+    <link rel="stylesheet" href="css/newlogin.css">
+
+
+
+
+</head>
+<body>
+<div id="loginDiv">
+    <!--<div class="top">-->
+        <!--<img src="images/yqwllogo.png">-->
+        <!--<div class="xian"></div>-->
+    <!--</div>-->
+    <div class="name">TAS物流自动化管理系统</div>
+
+    <div class="center">
+        <img src="images/jywl.jpg">
+        <div class="denglu">
+            <div class="huiyi">TAS</div>
+            <div style="margin: 20px;height: 45px;margin-top: 0px">
+                <div class="iconfont icon-icon7 tb"></div>
+                <input type="text" id="username" v-model="name" placeholder="用户名" @keyup.enter="login"></input>
+            </div>
+            <div style="margin: 20px;height: 45px;margin-top: 25px">
+                <div class="iconfont icon-mima tb"></div>
+                <input id="password" type="password" placeholder="密码" v-model="password" @keyup.enter="login"></input>
+            </div>
+            <div style="margin: 20px;height: 45px;margin-top: 25px">
+                <div class="iconfont icon-quanju_yuming tb"></div>
+                <i-Select v-model="domainCode">
+                    <i-Option v-for="item in domainNameList" :value="item.value"  placeholder="域名" :index="item.index" :key="item.value">{{ item.label }}</i-Option>
+                </i-Select>
+            </div>
+
+            <input type="submit" class="anniu"  @click="login" value="登 录 "></input>
+            <!--<a href="register/register.html"> <div style="float: right;margin-right: 20px;margin-bottom: 5px;color: #003b90;font-size: 14px;cursor: pointer"> 注册 </div></a>-->
+        </div>
+
+
+    </div>
+
+    <div class="bottom">
+        <div class="bottom-one">版权所有：捷运科技有限公司 <span class="iconfont icon-iconfontadd" style="color: #003b90;margin-left: 20px;font-size: 14px " @click="addFavorite"> 加入收藏 </span></div>
+        <div class="bottom-two">技术部信息运维中心 电话 17790071261 邮箱 17790071261@163.com</div>
+        <div class="bottom-three">技术支持：捷运科技有限公司</div>
+    </div>
+
+</div>
+<script>
+    new Vue({
+        el: '#loginDiv',
+        data: {
+            spinShow: false,
+            name: "",
+            password: "",
+         //   domainName: "LEAN",
+            isError: false,
+            error_msg: "",
+            domainName:"",
+            domainCode:"",
+            domainNameList:[
+                {
+                    value: 'D',
+                    label: '区级代理'
+                },{
+                    value: 'C',
+                    label: '市级代理'
+                },{
+                    value: 'B',
+                    label: '省级代理'
+                },
+                {
+                    value: 'A',
+                    label: '总部'
+                },
+            ]
+        },
+        created() {
+        },
+        methods: {
+            touristLogin(){
+                var that = this;
+                that.$http.post('/pc/api/v1/auth/touristLogin').then((result) => {
+                    console.log(result.data);
+                    if (result.data.isSuccess) {
+                        localStorage.setItem('token', result.data.data.token);
+                        localStorage.setItem('refreshToken', result.data.data.refreshToken);
+                        location.href = "index.html";
+                        console.log(token)
+                        that.$Message.info(result.data.resultMsg);
+                    } else {
+                        that.$Message.info(result.data.resultMsg);
+                    }
+                });
+
+            },
+            addFavorite(){
+
+            },
+            login() {
+                var that = this;
+                if (that.name == '') {
+                    that.$Message.error('用户名不能为空');
+                    return '';
+                }
+                if (that.password == '') {
+                    that.$Message.error('密码不能为空');
+                    return '';
+                }
+                if (that.domainCode == '') {
+                    that.$Message.error('域不能为空');
+                    return '';
+                }
+                console.log("model1",that.model1)
+                console.log("sdds",that.domainCode)
+                const p = {
+                    userName: that.name,
+                    password: that.password,
+                    domainCode: that.domainCode,
+                };
+                that.$http.post('/pc/api/v1/auth/login', p).then((result) => {
+                    console.log(result.data);
+                    if (result.data.isSuccess) {
+                        localStorage.setItem('token', result.data.data.token);
+                        localStorage.setItem('refreshToken', result.data.data.refreshToken);
+                        location.href = "index.html";
+                        console.log(token)
+                        that.$Message.info(result.data.resultMsg);
+                    } else {
+                        that.$Message.info(result.data.resultMsg);
+                    }
+                });
+            }
+        }
+    })
+</script>
+</body>
+</html>

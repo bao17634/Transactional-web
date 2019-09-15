@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring-atomikos" />
+        <module name="Transactional-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="spring-atomikos" target="1.8" />
+      <module name="Transactional-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

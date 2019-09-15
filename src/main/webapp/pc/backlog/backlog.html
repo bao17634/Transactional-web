@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-hans" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script type="text/javascript" src="../dist/vue.js"></script>
+    <script type="text/javascript" src="../dist/iview.js"></script>
+    <link rel="stylesheet" type="text/css" href="../dist/iview.css">
+    <link rel="stylesheet" type="text/css" href="backlog.css">
+    <script type="text/javascript" src="backlog.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_418736_vzjz0av3do893sor.css">
+    <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_434942_fdh9xooc7b65hfr.css">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <script src="../js/common.js"></script>
+    <title>首页</title>
+</head>
+<body>
+
+<div class="content" id="content" v-cloak>
+    <div class="title">
+        <div class="title_text">
+            <span class="welcome">欢迎您,</span>
+            <span>{{userName}}</span>
+        </div>
+        <img src="../images/dbsx.png">
+    </div>
+
+    <div class="wel_con ">
+        <!--&lt;!&ndash;跟踪事项&ndash;&gt;-->
+        <!--<Card>-->
+            <!--<div class="con_title">-->
+                <!--<Icon type="ios-browsers" style="color: #47cb89;"></Icon>-->
+                <!--跟踪事项-->
+            <!--</div>-->
+            <!--<div>-->
+                <!--<i-table :show-header="false" :columns="trackColumns" :data="trackData" style="margin: 0px;padding: 0px"></i-table>-->
+            <!--</div>-->
+        <!--</Card>-->
+        <!--&lt;!&ndash;跟踪事项分页&ndash;&gt;-->
+        <!--<div style=" width: 100%; margin: 10px auto;text-align: right">-->
+            <!--<Page :current.sync="currentCount" :total="totalCount" @on-change="changeTrackPage"-->
+                  <!--:page-size="changeUserPageSize" simple></Page>-->
+        <!--</div>-->
+
+        <!-- 待审批的申请单-->
+        <!--<div class="wel_con_bot_l">-->
+            <!--<Card>-->
+                <!--<div class="con_title_2">-->
+                    <!--<Icon type="ios-copy" style="color: #708eff;"></Icon>-->
+                    <!--待审批的注册信息-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<i-table :show-header="false" :columns="appColumns" :data="appData"-->
+                             <!--@on-row-dblclick="appMT"></i-table>-->
+                <!--</div>-->
+
+            <!--</Card>-->
+            <!--<div style=" width: 100%; margin: 10px auto;text-align: right">-->
+                <!--<Page :current.sync="appcurrentCount" :total="apptotalCount" @on-change="changeAppPage"-->
+                      <!--:page-size="appchangeUserPageSize" simple></Page>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--待审批的报销单-->
+        <!--<div class="wel_con_bot_r">-->
+            <!--<Card>-->
+                <!--<div class="con_title_3">-->
+                    <!--<Icon type="md-analytics" style="color: #62bcfc;"></Icon>-->
+                    <!--待审批的提案-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<i-table :show-header="false" :columns="billColumns" :data="billData"-->
+                             <!--@on-row-dblclick="billMT"></i-table>-->
+                <!--</div>-->
+
+            <!--</Card>-->
+            <!--<div style=" width: 100%; margin: 10px auto;text-align: right">-->
+                <!--<Page :current.sync="billcurrentCount" :total="billtotalCount" @on-change="changeBillPage"-->
+                      <!--:page-size="billchangeUserPageSize" simple></Page>-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+</div>
+</div>
+<script type="text/javascript" src="backlog.js"></script>
+</body>
+</html>
