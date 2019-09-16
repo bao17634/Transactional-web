@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>TAS物流自动化管理系统</title>
+    <title>分布式测试</title>
     <script type="text/javascript" src="dist/vue.js"></script>
     <!--<script type="text/javascript" src="js/vue-resource.js"></script>-->
     <script type="text/javascript" src="js/my.js"></script>
@@ -32,34 +32,57 @@
             background-color: #fdfdfd;
             box-sizing: border-box;
             -moz-box-sizing: border-box;
-            -webkit-box-sizing:border-box;
+            -webkit-box-sizing: border-box;
         }
-        .ivu-menu-item{
+
+        .ivu-menu-item {
             border-left: 2px solid #efefef;
             border-right: none;
         }
-        .ivu-menu-light.ivu-menu-vertical .ivu-menu-item{
+
+        .ivu-menu-light.ivu-menu-vertical .ivu-menu-item {
             border: none;
             border-left: 2px solid #efefef;
         }
+
         /*顶部空白区，转css无效*/
-        .ivu-tabs-bar{
-            margin-bottom:0px;
+        .ivu-tabs-bar {
+            margin-bottom: 0px;
         }
     </style>
 </head>
 <body>
 <div class="content" id="content">
-    <template>
-        <Table :columns="columns1" :data="mysql"></Table>
-        <Table :columns="columns1" :data="pgsql"></Table>
-    </template>
+    <div>
+        <h1>SaaS库存表</h1>
+        <i-table :columns="columns1" :data="mysql"></i-table>
+        <h2>Tss库存表</h2>
+        <i-table :columns="columns1" :data="pgsql"></i-table>
+        <h3>Order记录表</h3>
+        <i-table height="300" :columns="columns2" :data="order"></i-table>
+    </div>
+    <div style="text-align: center">
+        <template>
+            <br>
+            <input style="width: 300px" v-model="toSaas"/>
+            <Button style="width: 100px" @click="tssToSaa">从Tss库到SaaS库</Button>
+            <br>
+            <br/>
+            <input style="width: 300px" v-model="toTss"/>
+            <Button style="width: 100px" type="primary" @click="saasToTss">从SaaS库到Tss库</Button>
+            <br>
+            <br>
+            <Button style="width: 100px" type="primary" @click="restData">初始化</Button>
+        </template>
+    </div>
 </div>
 <script>
     var vsidebar = new Vue({
         el: "#content",
         data: {
-            columns1:[
+            toSaas: '',
+            toTss: '',
+            columns1: [
                 {
                     title: '库存数量',
                     key: 'number'
@@ -73,18 +96,95 @@
                     key: 'commodityName'
                 }
             ],
-            mysql:[],
-            pgsql:[]
+            columns2: [
+                {
+                    title: '货物编码',
+                    key: 'commodityCode'
+                },
+                {
+                    title: '订单数量',
+                    key: 'orderCount'
+                },
+                {
+                    title: '订单编码',
+                    key: 'orderCode'
+                },
+                {
+                    title: '货物名称',
+                    key: 'orderName'
+                }
+            ],
+            mysql: [],
+            pgsql: [],
+            order: []
         },
-        created(){
-            let that=this
-            that.$http.post("pc/yqwl/user/updatePassword",).then((result) => {
-                console.log(result);
-        });
+        created() {
+            this.query()
         },
         methods: {
-
+            query() {
+                let that = this
+                that.$http.post("WebController/queryInfo").then((result) => {
+                    console.log(result);
+                    this.mysql = result.data.saasHouse;
+                    this.pgsql = result.data.tssHouse;
+                    this.order = result.data.order
+                });
             },
+            tssToSaa() {
+                let that = this;
+                let params = {
+                    number: this.toSaas
+                }
+                that.$http.get("http://rong.ngrok.lbh1005.com:88/orderController/addOrder", {params}).then((result) => {
+                    console.log(result)
+                    if (result.data > 1) {
+                        this.query()
+                    }
+
+                });
+            },
+            saasToTss() {
+                let that = this;
+                let params = {
+                    number: -this.toTss
+                }
+                that.$http.get("http://rong.ngrok.lbh1005.com:88/orderController/addOrder", {params}).then((result) => {
+                    console.log(result)
+                    if (result.data > 1) {
+                        this.query()
+                    }
+
+                });
+            },
+            restData() {
+                let that = this;
+                this.toSaas = '';
+                this.toTss = '';
+                let
+                    tssArr = [];
+                let saasArr = [];
+                let commodityCode = "bf5f48fcfa9d43bca391e9f66fd8c9ba";
+                tssArr.push({
+                    number: 2000,
+                    commodityCode: commodityCode
+                })
+                saasArr.push({
+                    number: 0,
+                    commodityCode: commodityCode
+                })
+                let OrderDTO = {
+                    saasHouse: saasArr,
+                    tssHouse: tssArr,
+                }
+                that.$http.post("WebController/updateInfo", OrderDTO).then((result) => {
+                    console.log(result)
+                    if (result.data > 1) {
+                        this.query()
+                    }
+                });
+            }
+        },
 
     });
 </script>

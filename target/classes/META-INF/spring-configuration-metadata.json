@@ -2,214 +2,214 @@
   "hints": [],
   "groups": [
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "name": "spring.datasource.druid.business-db",
-      "type": "com.gitee.taven.config.prop.MysqlProperties"
+      "type": "com.byr.config.prop.MysqlProperties"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "name": "spring.datasource.druid.system-db",
-      "type": "com.gitee.taven.config.prop.PostgreSqlProperties"
+      "type": "com.byr.config.prop.PostgreSqlProperties"
     }
   ],
   "properties": [
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "name": "spring.datasource.druid.business-db.connection-properties",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "name": "spring.datasource.druid.business-db.filters",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "name": "spring.datasource.druid.business-db.initial-size",
       "type": "java.lang.Integer"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "name": "spring.datasource.druid.business-db.max-active",
       "type": "java.lang.Integer"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "name": "spring.datasource.druid.business-db.max-pool-prepared-statement-per-connection-size",
       "type": "java.lang.Integer"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "name": "spring.datasource.druid.business-db.max-wait",
       "type": "java.lang.Integer"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "name": "spring.datasource.druid.business-db.min-evictable-idle-time-millis",
       "type": "java.lang.Integer"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "name": "spring.datasource.druid.business-db.min-idle",
       "type": "java.lang.Integer"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "name": "spring.datasource.druid.business-db.password",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "defaultValue": false,
       "name": "spring.datasource.druid.business-db.pool-prepared-statements",
       "type": "java.lang.Boolean"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "defaultValue": false,
       "name": "spring.datasource.druid.business-db.test-on-borrow",
       "type": "java.lang.Boolean"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "defaultValue": false,
       "name": "spring.datasource.druid.business-db.test-on-return",
       "type": "java.lang.Boolean"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "defaultValue": false,
       "name": "spring.datasource.druid.business-db.test-while-idle",
       "type": "java.lang.Boolean"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "name": "spring.datasource.druid.business-db.time-between-eviction-runs-millis",
       "type": "java.lang.Integer"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "name": "spring.datasource.druid.business-db.url",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "defaultValue": false,
       "name": "spring.datasource.druid.business-db.use-global-data-source-stat",
       "type": "java.lang.Boolean"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "name": "spring.datasource.druid.business-db.username",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "name": "spring.datasource.druid.business-db.validation-query",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.MysqlProperties",
+      "sourceType": "com.byr.config.prop.MysqlProperties",
       "name": "spring.datasource.druid.business-db.validation-query-timeout",
       "type": "java.lang.Integer"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "name": "spring.datasource.druid.system-db.connection-properties",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "name": "spring.datasource.druid.system-db.filters",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "name": "spring.datasource.druid.system-db.initial-size",
       "type": "java.lang.Integer"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "name": "spring.datasource.druid.system-db.max-active",
       "type": "java.lang.Integer"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "name": "spring.datasource.druid.system-db.max-pool-prepared-statement-per-connection-size",
       "type": "java.lang.Integer"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "name": "spring.datasource.druid.system-db.max-wait",
       "type": "java.lang.Integer"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "name": "spring.datasource.druid.system-db.min-evictable-idle-time-millis",
       "type": "java.lang.Integer"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "name": "spring.datasource.druid.system-db.min-idle",
       "type": "java.lang.Integer"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "name": "spring.datasource.druid.system-db.password",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "defaultValue": false,
       "name": "spring.datasource.druid.system-db.pool-prepared-statements",
       "type": "java.lang.Boolean"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "defaultValue": false,
       "name": "spring.datasource.druid.system-db.test-on-borrow",
       "type": "java.lang.Boolean"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "defaultValue": false,
       "name": "spring.datasource.druid.system-db.test-on-return",
       "type": "java.lang.Boolean"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "defaultValue": false,
       "name": "spring.datasource.druid.system-db.test-while-idle",
       "type": "java.lang.Boolean"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "name": "spring.datasource.druid.system-db.time-between-eviction-runs-millis",
       "type": "java.lang.Integer"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "name": "spring.datasource.druid.system-db.url",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "defaultValue": false,
       "name": "spring.datasource.druid.system-db.use-global-data-source-stat",
       "type": "java.lang.Boolean"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "name": "spring.datasource.druid.system-db.username",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "name": "spring.datasource.druid.system-db.validation-query",
       "type": "java.lang.String"
     },
     {
-      "sourceType": "com.gitee.taven.config.prop.PostgreSqlProperties",
+      "sourceType": "com.byr.config.prop.PostgreSqlProperties",
       "name": "spring.datasource.druid.system-db.validation-query-timeout",
       "type": "java.lang.Integer"
     }
